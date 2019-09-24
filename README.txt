@@ -1,7 +1,7 @@
 ==================================================
  README for "RICOH THETA SDK for Android"
 
- Version :0.2.0
+ Version :0.3.0
 ==================================================
 
 This file is an explanation document for RICOH THETA SDK for Android.
@@ -36,7 +36,11 @@ ricoh-theta-sample-for-android is a sample app created using the libraries menti
     README_ja.txt: This file (Japanese)
     LICENSE.txt: Terms of service file (English)
     LICENSE_ja.txt: Terms of service file (Japanese)
-    ricoh-theta-sample-for-android.0.2.0: Sample app
+    ricoh-theta-sample-for-android
+    ┣ libs: Sample project library 
+    ┣ res: Sample project resource file
+    ┣ src: Sample application source
+    ┗ doc: Sample application Javadoc
     lib
     ┣ bin
     ┃  ┣ ricoh-theta4j.0.2.0.jar: Library about operations of RICOH THETA
@@ -80,7 +84,9 @@ ricoh-theta-sample-for-android is a sample app created using the libraries menti
         1. Import ricoh-theta-sample-for-android.0.2.0 as a project into Eclipse, and build it in the Android device.
         2. Connect the RICOH THETA to the Android device using Wi-Fi.
             (Usage instructions, connecting the camera to a smartphone: https://theta360.com/en/support/manual/content/prepare/prepare_06.html)
-        3. The sample application can be operated
+        3. Viewer section within the sample program is created using OpenGL ES2.0.
+           Use a device that is compatible with the operation.
+        4. The sample application can be operated
 
     [Using your own app with RICOH THETA SDK]
         1. Pass the classpaths of ricoh-theta4j.0.2.0.jar and r-exif4j.0.2.0.jar through your own app.
@@ -123,5 +129,6 @@ ricoh-theta-sample-for-android is a sample app created using the libraries menti
 
 * Update History
 
+    02/20/2015 0.3.0 Spherical viewer function added to the sample app
     11/06/2014 0.2.0 Documents are translated
     10/28/2014 0.1.0 Initial release

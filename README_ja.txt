@@ -1,7 +1,7 @@
 ==================================================
  README for "RICOH THETA SDK for Android"
 
- Version :0.2.0
+ Version :0.3.0
 ==================================================
 
 このファイルはRICOH THETA SDK for Androidに関する説明文書です。
@@ -36,17 +36,21 @@ ricoh-theta-sample-for-androidは上記のライブラリを利用したサン�
     README_ja.txt                        ：このファイルです(日本語)
     LICENSE.txt                          ：規約に関するファイルです(英語)
     LICENSE_ja.txt                       ：規約に関するファイルです(日本語)
-    ricoh-theta-sample-for-android.0.2.0 ：サンプルアプリケーションです
+    ricoh-theta-sample-for-android
+    ┣ libs                              ：サンプルプロジェクト用ライブラリです
+    ┣ res                               ：サンプルプロジェクト用リソースファイルです
+    ┣ src                               ：サンプルアプリケーションのソースです
+    ┗ doc                               ：サンプルアプリケーションのJavadocです
     lib
     ┣ bin
-    ┃  ┣ ricoh-theta4j.0.2.0.jar         ：RICOH THETAの操作に関するライブラリです
-    ┃  ┗ r-exif4j.0.2.0.jar              ：RICOH THETAで撮影した全天球イメージのEXIF情報の取得ができるライブラリです
+    ┃  ┣ ricoh-theta4j.0.2.0.jar       ：RICOH THETAの操作に関するライブラリです
+    ┃  ┗ r-exif4j.0.2.0.jar            ：RICOH THETAで撮影した全天球イメージのEXIF情報の取得ができるライブラリです
     ┣ src
-    ┃  ┣ ricoh-theta4j                   ：ricoh-theta4jのソースです
-    ┃  ┗ r-exif4j                        ：r-exif4jのソースです
+    ┃  ┣ ricoh-theta4j                 ：ricoh-theta4jのソースです
+    ┃  ┗ r-exif4j                      ：r-exif4jのソースです
     ┗ doc
-       ┣ ricoh-theta4j                   ：ricoh-theta4jのJavadocです
-       ┗ r-exif4j                        ：r-exif4jのJavadocです
+       ┣ ricoh-theta4j                  ：ricoh-theta4jのJavadocです
+       ┗ r-exif4j                       ：r-exif4jのJavadocです
 
 ----------------------------------------
 
@@ -80,7 +84,9 @@ ricoh-theta-sample-for-androidは上記のライブラリを利用したサン�
         1. ricoh-theta-sample-for-android.0.2.0をプロジェクトとしてEclipseにインポートし、Android端末にビルドしてください
         2. RICOH THETAをAndroid端末とWi-Fiで接続してください
             (使用説明書、カメラとスマートフォンを接続する：https://theta360.com/ja/support/manual/content/prepare/prepare_06.html)
-        3. サンプルアプリケーションを操作する事ができます
+        3. サンプルプログラムの内、 ビューア部はOpenGL ES2.0を使用して作成しています
+           動作に際して対応した実機を使用してください
+        4. サンプルアプリケーションを操作する事ができます
 
     [ 自分のアプリケーションでRICOH THETA SDKを利用する場合 ]
         1. 自分のアプリケーションにricoh-theta4j.0.2.0.jarとr-exif4j.0.2.0.jarのクラスパスを通してください
@@ -123,5 +129,6 @@ ricoh-theta-sample-for-androidは上記のライブラリを利用したサン�
 
 * 更新履歴
 
+    2015/02/20 0.3.0 サンプルアプリに全天球ビューア機能を追加
     2014/11/06 0.2.0 英語訳反映
     2014/10/28 0.1.0 初回リリース
