@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.net.SocketFactory;
+
 import com.theta360.lib.ptp.service.PtpipEventListeningService;
 import com.theta360.lib.ptpip.connector.PtpipConnector;
 import com.theta360.lib.ptpip.entity.CommandResponse;
@@ -69,26 +71,26 @@ public class PtpipInitiator {
 	private final int DATE_MAX_LENGTH = 17;
 
 	/**
+	 * @param socketFactory
 	 * @param ipAddr
-	 *            IP address
 	 * @throws IOException
 	 * @throws ThetaException
 	 */
-	public PtpipInitiator(String ipAddr) throws IOException, ThetaException {
-		open(ipAddr);
+	public PtpipInitiator(SocketFactory socketFactory, String ipAddr) throws IOException, ThetaException {
+		open(socketFactory, ipAddr);
 		PtpipEventListeningService.start();
 	}
 
-	private void open(String ipAddr) throws IOException, ThetaException {
+	private void open(SocketFactory socketFactory, String ipAddr) throws IOException, ThetaException {
 		if (!PtpipConnector.isConnected()) {
-			PtpipConnector.open(ipAddr);
+			PtpipConnector.open(socketFactory, ipAddr);
 		}
 	}
 
 	/**
 	 * Disconnects PTP connection. (evtSession Close -&gt; cmdSession Close
 	 * -&gt; disconnect PTP)
-	 * 
+	 *
 	 * @throws ThetaException
 	 */
 	public static void close() throws ThetaException {
@@ -97,7 +99,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Acquires device information.
-	 * 
+	 *
 	 * @return Device information data
 	 * @throws ThetaException
 	 */
@@ -117,7 +119,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Returns list of currently valid storage IDs.
-	 * 
+	 *
 	 * @return Storage ID list
 	 * @throws ThetaException
 	 */
@@ -137,7 +139,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Returns number of objects corresponding to specified storage ID.
-	 * 
+	 *
 	 * @param storageId
 	 *            storage ID
 	 * @param format
@@ -170,7 +172,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Returns object handle corresponding to specified storage ID.
-	 * 
+	 *
 	 * @param storageId
 	 * @param format
 	 *            (Option) Object type
@@ -198,7 +200,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Returns object information corresponding to specified object handle.
-	 * 
+	 *
 	 * @param handle
 	 *            Object handle
 	 * @return Object information
@@ -221,7 +223,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Returns objects corresponding to specified object handle.
-	 * 
+	 *
 	 * @param handle
 	 *            Object handle
 	 * @return Object
@@ -243,7 +245,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Returns thumbnail in specified object handle.
-	 * 
+	 *
 	 * @param handle
 	 *            Object handle
 	 * @return Thumbnail
@@ -267,7 +269,7 @@ public class PtpipInitiator {
 	/**
 	 * Acquires object corresponding to specified object handle, resized to
 	 * 2048x1024 pixels.
-	 * 
+	 *
 	 * @param handle
 	 * @param imgWidth
 	 * @param imgHeight
@@ -285,7 +287,7 @@ public class PtpipInitiator {
 	/**
 	 * Acquires object corresponding to specified object handle, resized to
 	 * 2048x1024 pixels.
-	 * 
+	 *
 	 * @param handle
 	 * @param imgWidth
 	 * @param imgHeight
@@ -315,7 +317,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Sets device property value for specified device property.
-	 * 
+	 *
 	 * @param propCode
 	 *            Property code
 	 * @param sendData
@@ -339,7 +341,7 @@ public class PtpipInitiator {
 	/**
 	 * Acquires GPS information. Returns to default setting when power is turned
 	 * off.
-	 * 
+	 *
 	 * @return GPS Information
 	 * @throws ThetaException
 	 */
@@ -350,7 +352,7 @@ public class PtpipInitiator {
 	/**
 	 * Sets GPS information. Returns to default setting when power is turned
 	 * off.
-	 * 
+	 *
 	 * @param latitude
 	 * @param longitude
 	 * @param altitude
@@ -383,7 +385,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Starts shooting.
-	 * 
+	 *
 	 * @throws ThetaException
 	 */
 	public void initiateCapture() throws ThetaException {
@@ -400,7 +402,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Starts shooting.
-	 * 
+	 *
 	 * @param ptpipEventListener
 	 *            Event listener. If the listener is no longer needed after it
 	 *            is called, pass "null" in
@@ -416,7 +418,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Acquires date and time.
-	 * 
+	 *
 	 * @return Date data
 	 * @throws ThetaException
 	 */
@@ -431,7 +433,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Sets date and time.
-	 * 
+	 *
 	 * @param date
 	 *            Date data
 	 * @throws ThetaException
@@ -500,7 +502,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Returns device property description for specified device property.
-	 * 
+	 *
 	 * @param propCode
 	 *            Property code
 	 * @return Device Property Description
@@ -523,7 +525,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Returns device property value for specified device property.
-	 * 
+	 *
 	 * @param propCode
 	 *            Property code
 	 * @return Device property value
@@ -546,7 +548,7 @@ public class PtpipInitiator {
 	/**
 	 * Sets exposure correction value. <br>
 	 * Returns to default setting when power is turned off.
-	 * 
+	 *
 	 * @param exposure
 	 *            Exposure compensation value
 	 * @throws ThetaException
@@ -557,7 +559,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Acquires exposure correction value.
-	 * 
+	 *
 	 * @return Exposure compensation value
 	 * @throws ThetaException
 	 */
@@ -567,7 +569,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Sets the sleep mode (seconds) of the camera.
-	 * 
+	 *
 	 * @param second
 	 *            0: Auto sleep OFF, 1 to 29: 30 seconds, 30 to 1800: Specified
 	 *            number of seconds. An exception occurs if any other value is
@@ -582,7 +584,7 @@ public class PtpipInitiator {
 	/**
 	 * Acquires the sleep mode (seconds) of the camera. <br>
 	 * Sleep mode is not activated if 0 is set.
-	 * 
+	 *
 	 * @return Time after which the camera enters sleep mode (seconds)
 	 * @throws ThetaException
 	 */
@@ -593,7 +595,7 @@ public class PtpipInitiator {
 	/**
 	 * Acquires the auto power off setting of the camera (minutes). <br>
 	 * Auto power off is not set if 0 is set.
-	 * 
+	 *
 	 * @return Time after which auto power off occurs (minutes)
 	 * @throws ThetaException
 	 */
@@ -605,7 +607,7 @@ public class PtpipInitiator {
 	 * Sets the auto power off setting of the camera (minutes). <br>
 	 * 0 to 30 (minutes) can be set <br>
 	 * Auto power off is not set if 0 is set.
-	 * 
+	 *
 	 * @param minute
 	 *            Time after which auto power off occurs (minutes)
 	 * @throws ThetaException
@@ -616,7 +618,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Acquires error information.
-	 * 
+	 *
 	 * @return Error information
 	 * @throws ThetaException
 	 */
@@ -629,7 +631,7 @@ public class PtpipInitiator {
 	 * The data type is the same as the Exif 2.3 standard rational type. For
 	 * example, (1, 8000) is 1/8000 of a second. <br>
 	 * Returns to default setting when power is turned off.
-	 * 
+	 *
 	 * @return Shutter speed
 	 * @throws ThetaException
 	 */
@@ -647,7 +649,7 @@ public class PtpipInitiator {
 	 * The data type is the same as the Exif 2.3 standard rational type. For
 	 * example, (1, 8000) is 1/8000 of a second. <br>
 	 * Returns to default setting when power is turned off.
-	 * 
+	 *
 	 * @param shutterSpeed
 	 * @throws ThetaException
 	 */
@@ -658,7 +660,7 @@ public class PtpipInitiator {
 	/**
 	 * Acquires white balance. <br>
 	 * Returns to default setting when power is turned off.
-	 * 
+	 *
 	 * @return White balance mode
 	 * @throws ThetaException
 	 */
@@ -674,7 +676,7 @@ public class PtpipInitiator {
 	/**
 	 * Sets white balance. <br>
 	 * Returns to default setting when power is turned off.
-	 * 
+	 *
 	 * @param whiteBalance
 	 *            White balance mode
 	 * @throws ThetaException
@@ -685,7 +687,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Deletes objects corresponding to specified object handle.
-	 * 
+	 *
 	 * @param handle
 	 *            Object handle
 	 * @param format
@@ -708,7 +710,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Returns information corresponding to specified storage ID.
-	 * 
+	 *
 	 * @param storageId
 	 * @return Information corresponding to specified storage ID
 	 * @throws ThetaException
@@ -739,7 +741,7 @@ public class PtpipInitiator {
 	/**
 	 * Acquires ISO sensitivity. <br>
 	 * Returns to default setting when power is turned off.
-	 * 
+	 *
 	 * @return ISO sensitivity
 	 * @throws ThetaException
 	 */
@@ -755,7 +757,7 @@ public class PtpipInitiator {
 	/**
 	 * Sets ISO sensitivity. <br>
 	 * Returns to default setting when power is turned off.
-	 * 
+	 *
 	 * @param iSOSpeed
 	 *            ISO sensitivity
 	 * @throws ThetaException
@@ -768,7 +770,7 @@ public class PtpipInitiator {
 	 * Sets maximum number of shots for interval shooting. <br>
 	 * No shooting limit is applied if 0x0000 is set. <br>
 	 * Returns to default setting when power is turned off.
-	 * 
+	 *
 	 * @param timeLapseNumber
 	 *            Maximum number of shots
 	 * @throws ThetaException
@@ -785,7 +787,7 @@ public class PtpipInitiator {
 	 * Acquires maximum number of shots for interval shooting. <br>
 	 * No shooting limit is applied if 0x0000 is set. <br>
 	 * Returns to default setting when power is turned off.
-	 * 
+	 *
 	 * @return Maximum number of shots
 	 * @throws ThetaException
 	 */
@@ -796,7 +798,7 @@ public class PtpipInitiator {
 	/**
 	 * Sets shooting interval for interval shooting. <br>
 	 * Returns to default setting when power is turned off.
-	 * 
+	 *
 	 * @param timeLapseInterval
 	 *            Shooting interval for interval shooting (milliseconds)
 	 * @throws ThetaException
@@ -812,7 +814,7 @@ public class PtpipInitiator {
 	/**
 	 * Acquires shooting interval for interval shooting. <br>
 	 * Returns to default setting when power is turned off.
-	 * 
+	 *
 	 * @return Shooting interval for interval shooting (milliseconds)
 	 * @throws ThetaException
 	 */
@@ -824,7 +826,7 @@ public class PtpipInitiator {
 	 * Sets wireless LAN channel. <br>
 	 * Reflected when the Wi-Fi is turned OFF/ON. <br>
 	 * Random operation occurs if 0 is set.
-	 * 
+	 *
 	 * @param channelNumber
 	 *            Wireless LAN channel
 	 * @throws ThetaException
@@ -837,7 +839,7 @@ public class PtpipInitiator {
 	 * Acquires wireless LAN channel. <br>
 	 * Reflected when the Wi-Fi is turned OFF/ON. <br>
 	 * Random operation occurs if 0 is set.
-	 * 
+	 *
 	 * @return Wireless LAN channel
 	 * @throws ThetaException
 	 */
@@ -847,7 +849,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Acquires shooting operation status of camera.
-	 * 
+	 *
 	 * @return Shooting operation status of camera
 	 * @throws ThetaException
 	 */
@@ -857,7 +859,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Acquires charge level. There are four detection levels.
-	 * 
+	 *
 	 * @return Charge level
 	 * @throws ThetaException
 	 */
@@ -870,7 +872,7 @@ public class PtpipInitiator {
 	 * Sets the shooting mode. <br>
 	 * Returns to default setting when power is turned off or when
 	 * InitiateOpenCapture ends.
-	 * 
+	 *
 	 * @param mode
 	 *            Shooting mode
 	 * @throws ThetaException
@@ -883,7 +885,7 @@ public class PtpipInitiator {
 	 * Acquires shooting mode. <br>
 	 * Returns to default setting when power is turned off or when
 	 * InitiateOpenCapture ends.
-	 * 
+	 *
 	 * @return Shooting mode
 	 * @throws ThetaException
 	 */
@@ -893,7 +895,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Starts capture. Video (RICOH THETA m15) and interval.
-	 * 
+	 *
 	 * @throws ThetaException
 	 */
 	public void initiateOpenCapture() throws ThetaException {
@@ -913,7 +915,7 @@ public class PtpipInitiator {
 	 * If the listener is no longer needed after it is called, pass "null" in
 	 * {@link PtpipInitiator#setPtpipEventListener(PtpipEventListener)} to
 	 * disable the listener so that it is no longer called.
-	 * 
+	 *
 	 * @param ptpipEventListener
 	 *            Event listener
 	 * @throws ThetaException
@@ -925,7 +927,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Ends continuous shooting.
-	 * 
+	 *
 	 * @throws ThetaException
 	 */
 	public void terminateOpenCapture() throws ThetaException {
@@ -943,7 +945,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Turns Wi-Fi OFF.
-	 * 
+	 *
 	 * @throws ThetaException
 	 */
 	public void wlanPowerControl() throws ThetaException {
@@ -960,7 +962,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Acquires video recording time (seconds). (RICOH THETA m15)
-	 * 
+	 *
 	 * @return Video recording time (seconds)
 	 * @throws ThetaException
 	 */
@@ -970,7 +972,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Acquires available video shooting time (seconds). (RICOH THETA m15)
-	 * 
+	 *
 	 * @return Available video shooting time (seconds)
 	 * @throws ThetaException
 	 */
@@ -980,7 +982,7 @@ public class PtpipInitiator {
 
 	/**
 	 * Acquires shutter sound volume of connected camera
-	 * 
+	 *
 	 * @return Shutter sound volume (%)
 	 * @throws ThetaException
 	 */
@@ -992,7 +994,7 @@ public class PtpipInitiator {
 	 * Sets shutter sound volume of connected camera<br>
 	 * Returns to default setting (100%) when power is turned off.<br>
 	 * 0% to 100% can be set
-	 * 
+	 *
 	 * @param volume
 	 *            Shutter sound volume (%)
 	 * @throws ThetaException

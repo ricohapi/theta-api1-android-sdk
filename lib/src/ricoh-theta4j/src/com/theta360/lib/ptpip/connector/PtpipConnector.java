@@ -6,6 +6,8 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.net.SocketException;
 
+import javax.net.SocketFactory;
+
 import com.theta360.lib.ThetaException;
 import com.theta360.lib.ptp.service.PtpipEventListeningService;
 import com.theta360.lib.ptpip.entity.InitCommandAck;
@@ -27,8 +29,8 @@ public class PtpipConnector {
 	private static OutputStream eventOs;
 	public static InputStream eventIs;
 
-	public static void open(String ipAddr) throws IOException, ThetaException {
-		commandSocket = new Socket(ipAddr, PTPIP_PORT);
+	public static void open(SocketFactory socketFactory, String ipAddr) throws IOException, ThetaException {
+		commandSocket = socketFactory.createSocket(ipAddr, PTPIP_PORT);
 		commandSocket.setSoTimeout(SOCKET_TIMEOUT_SEC);
 		commandOs = commandSocket.getOutputStream();
 		InitCommandRequest icr = new InitCommandRequest();
@@ -37,7 +39,7 @@ public class PtpipConnector {
 		InitCommandAck ica = (InitCommandAck) icr.sendCommand();
 
 		try {
-			eventSocket = new Socket(ipAddr, PTPIP_PORT);
+			eventSocket = socketFactory.createSocket(ipAddr, PTPIP_PORT);
 		} catch (IOException e) {
 			commandOs.close();
 			commandIs.close();
@@ -173,7 +175,7 @@ public class PtpipConnector {
 	/**
 	 * Starts session. <br>
 	 * Multiple sessions are not supported.
-	 * 
+	 *
 	 * @param ipAddr
 	 * @throws ThetaException
 	 * @throws IOException
@@ -193,7 +195,7 @@ public class PtpipConnector {
 
 	/**
 	 * Ends session.
-	 * 
+	 *
 	 * @throws ThetaException
 	 */
 	public static void closeSession() throws ThetaException {

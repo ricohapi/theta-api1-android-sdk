@@ -1,7 +1,7 @@
 ==================================================
  README for "RICOH THETA SDK for Android"
 
- Version :0.3.0
+ Version :0.3.1
 ==================================================
 
 This file is an explanation document for RICOH THETA SDK for Android.
@@ -37,14 +37,14 @@ ricoh-theta-sample-for-android is a sample app created using the libraries menti
     LICENSE.txt: Terms of service file (English)
     LICENSE_ja.txt: Terms of service file (Japanese)
     ricoh-theta-sample-for-android
-    ┣ libs: Sample project library 
+    ┣ libs: Sample project library
     ┣ res: Sample project resource file
     ┣ src: Sample application source
     ┗ doc: Sample application Javadoc
     lib
     ┣ bin
-    ┃  ┣ ricoh-theta4j.0.2.0.jar: Library about operations of RICOH THETA
-    ┃  ┗ r-exif4j.0.2.0.jar: Library that enables acquisition of EXIF information from spherical images shot using RICOH THETA
+    ┃  ┣ ricoh-theta4j.0.3.1.jar: Library about operations of RICOH THETA
+    ┃  ┗ r-exif4j.0.3.1.jar: Library that enables acquisition of EXIF information from spherical images shot using RICOH THETA
     ┣ src
     ┃  ┣ ricoh-theta4j: The source of ricoh-theta4j
     ┃  ┗ r-exif4j: The source of r-exif4j
@@ -71,17 +71,18 @@ ricoh-theta-sample-for-android is a sample app created using the libraries menti
       Operation of the sample application has been verified under the following conditions.
 
       * Verified operating environment
-          Nexus 5 
+          Nexus 5
       * Development/Build Environment
-          Eclipse Luna
-          Android SDK (API Level 19)
+          Eclipse Mars
+          Android Studio 1.4
+          Android SDK (API Level 21)
 
 ----------------------------------------
 
 * How to Use
 
     [Operating the Sample Application]
-        1. Import ricoh-theta-sample-for-android.0.2.0 as a project into Eclipse, and build it in the Android device.
+        1. Import ricoh-theta-sample-for-android.0.3.1 as a project into Eclipse or Android Studio, and build it in the Android device.
         2. Connect the RICOH THETA to the Android device using Wi-Fi.
             (Usage instructions, connecting the camera to a smartphone: https://theta360.com/en/support/manual/content/prepare/prepare_06.html)
         3. Viewer section within the sample program is created using OpenGL ES2.0.
@@ -89,7 +90,7 @@ ricoh-theta-sample-for-android is a sample app created using the libraries menti
         4. The sample application can be operated
 
     [Using your own app with RICOH THETA SDK]
-        1. Pass the classpaths of ricoh-theta4j.0.2.0.jar and r-exif4j.0.2.0.jar through your own app.
+        1. Pass the classpaths of ricoh-theta4j.0.3.1.jar and r-exif4j.0.3.1.jar through your own app.
         2. Mount based on the sample application and information described below.
 
     [More detailed information]
@@ -119,7 +120,7 @@ ricoh-theta-sample-for-android is a sample app created using the libraries menti
 
     The products and services described in this document are the trademarks or registered trademarks of their respective owners.
 
-    * Android and Nexus are the trademarks or registered trademarks of Google Inc.
+    * Android, Android Studio and Nexus are the trademarks or registered trademarks of Google Inc.
     * Eclipse is the trademark or registered trademark of Eclipse Foundation, Inc. in the United States and other countries.
     * Wi-Fi is the trademark of Wi-Fi Alliance.
 
@@ -129,6 +130,7 @@ ricoh-theta-sample-for-android is a sample app created using the libraries menti
 
 * Update History
 
+    10/15/2015 0.3.1 Bug Fix(Lollipop API Connection)
     02/20/2015 0.3.0 Spherical viewer function added to the sample app
     11/06/2014 0.2.0 Documents are translated
     10/28/2014 0.1.0 Initial release

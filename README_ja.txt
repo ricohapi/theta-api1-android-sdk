@@ -1,7 +1,7 @@
 ==================================================
  README for "RICOH THETA SDK for Android"
 
- Version :0.3.0
+ Version :0.3.1
 ==================================================
 
 このファイルはRICOH THETA SDK for Androidに関する説明文書です。
@@ -43,8 +43,8 @@ ricoh-theta-sample-for-androidは上記のライブラリを利用したサン�
     ┗ doc                               ：サンプルアプリケーションのJavadocです
     lib
     ┣ bin
-    ┃  ┣ ricoh-theta4j.0.2.0.jar       ：RICOH THETAの操作に関するライブラリです
-    ┃  ┗ r-exif4j.0.2.0.jar            ：RICOH THETAで撮影した全天球イメージのEXIF情報の取得ができるライブラリです
+    ┃  ┣ ricoh-theta4j.0.3.1.jar       ：RICOH THETAの操作に関するライブラリです
+    ┃  ┗ r-exif4j.0.3.1.jar            ：RICOH THETAで撮影した全天球イメージのEXIF情報の取得ができるライブラリです
     ┣ src
     ┃  ┣ ricoh-theta4j                 ：ricoh-theta4jのソースです
     ┃  ┗ r-exif4j                      ：r-exif4jのソースです
@@ -71,17 +71,18 @@ ricoh-theta-sample-for-androidは上記のライブラリを利用したサン�
       サンプルアプリケーションは以下の条件で動作確認済みです。
 
       * 動作確認環境
-          Nexus 5 
+          Nexus 5
       * 開発・ビルド環境
-          Eclipse Luna
-          Android SDK (API Level 19)
+          Eclipse Mars
+          Android Studio 1.4
+          Android SDK (API Level 21)
 
 ----------------------------------------
 
 * 使い方に関して
 
     [ サンプルアプリケーションを動かす場合 ]
-        1. ricoh-theta-sample-for-android.0.2.0をプロジェクトとしてEclipseにインポートし、Android端末にビルドしてください
+        1. ricoh-theta-sample-for-android.0.3.1をプロジェクトとしてEclipseまたはAndroid Studioにインポートし、Android端末にビルドしてください
         2. RICOH THETAをAndroid端末とWi-Fiで接続してください
             (使用説明書、カメラとスマートフォンを接続する：https://theta360.com/ja/support/manual/content/prepare/prepare_06.html)
         3. サンプルプログラムの内、 ビューア部はOpenGL ES2.0を使用して作成しています
@@ -89,7 +90,7 @@ ricoh-theta-sample-for-androidは上記のライブラリを利用したサン�
         4. サンプルアプリケーションを操作する事ができます
 
     [ 自分のアプリケーションでRICOH THETA SDKを利用する場合 ]
-        1. 自分のアプリケーションにricoh-theta4j.0.2.0.jarとr-exif4j.0.2.0.jarのクラスパスを通してください
+        1. 自分のアプリケーションにricoh-theta4j.0.3.1.jarとr-exif4j.0.3.1.jarのクラスパスを通してください
         2. サンプルアプリケーションや後述の情報をもとに実装をしてください
 
     [ より詳しい情報に関して ]
@@ -119,7 +120,7 @@ ricoh-theta-sample-for-androidは上記のライブラリを利用したサン�
 
     本文書に記載されている商品・サービス名は、各社の商標または登録商標です。
 
-    * Android、Nexusは、Google Inc.の商標または登録商標です
+    * Android、Android Studio、Nexusは、Google Inc.の商標または登録商標です
     * Eclipseは、Eclipse Foundation, Inc.の米国およびその他の国における商標または登録商標です
     * Wi-Fiは、Wi-Fi Allianceの商標です
 
@@ -129,6 +130,7 @@ ricoh-theta-sample-for-androidは上記のライブラリを利用したサン�
 
 * 更新履歴
 
+    2015/10/15 0.3.1 不具合修正(Lollipop API接続)
     2015/02/20 0.3.0 サンプルアプリに全天球ビューア機能を追加
     2014/11/06 0.2.0 英語訳反映
     2014/10/28 0.1.0 初回リリース
